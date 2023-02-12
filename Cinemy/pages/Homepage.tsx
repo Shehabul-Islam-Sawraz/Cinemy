@@ -3,6 +3,7 @@ import {Text, View, Dimensions, FlatList} from 'react-native';
 import {getPopularMovies, getUpcomingMovies} from '../services/services';
 import {styles} from '../css/Homepage'
 import {SliderBox} from "react-native-image-slider-box"; // Used for image slide show
+import List from '../components/List'; // Contains the components that will be repeatedly used
 
 const slideshowImagePath = 'https://image.tmdb.org/t/p/w500';
 const dimensionScreen = Dimensions.get('screen'); // This returns the height & width of the device screen
@@ -53,13 +54,12 @@ const Homepage = () => {
                     autoplay = {true} 
                     circleLoop = {true} />
             </View>
-            <View
+            <View 
                 style = {styles.carousel}>
-                <FlatList
-                    data = {popularMovies}
-                    horizontal = {true}
-                    renderItem = {({item}) => <Text>{item.title}</Text>}>
-                </FlatList>
+                <List //Passing arguments to `List` component
+                    title = "Populer Movies"
+                    content = {popularMovies}> 
+                </List>
             </View>
         </React.Fragment>
     );
