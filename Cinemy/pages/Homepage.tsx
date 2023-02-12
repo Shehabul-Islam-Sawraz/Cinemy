@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, Dimensions} from 'react-native';
 import {getPopularMovies, getUpcomingMovies} from '../services/services';
+import {styles} from '../css/Homepage'
 import {SliderBox} from "react-native-image-slider-box"; // Used for image slide show
 
 const slideshowImagePath = 'https://image.tmdb.org/t/p/w500';
+const dimensionScreen = Dimensions.get('screen'); // This returns the height & width of the device screen
 
 const Homepage = () => {
     const [movie, setMovie] = useState(''); // Here we are using state variable so that the variable can be updated even after the template is rendered
@@ -41,12 +43,13 @@ const Homepage = () => {
 
     return (
         <View
-        style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-        }}>
-        <SliderBox images={moviesImages} />
+        style={styles.sliderContainer}>
+        <SliderBox 
+            images = {moviesImages} 
+            dotStyle = {styles.sliderDotsHeight}
+            sliderBoxHeight = {dimensionScreen.height / 1.5}
+            autoplay = {true} 
+            circleLoop = {true} />
         </View>
     );
 }
