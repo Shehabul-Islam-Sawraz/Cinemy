@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
-import { getPopularMovies } from '../services/services';
+import {getPopularMovies, getUpcomingMovies} from '../services/services';
+import {SliderBox} from "react-native-image-slider-box"; // Used for image slide show
+
+const slideshowImagePath = 'https://image.tmdb.org/t/p/w500';
 
 const Homepage = () => {
     const [movie, setMovie] = useState(''); // Here we are using state variable so that the variable can be updated even after the template is rendered
+    const [moviesImages, setMoviesImages] = useState('');
     const [errorMsg, setErrorMsg] = useState(false); // Stores error message(if any error occurs)
 
     // useEffect helps us to update a dome variable after any specified time or updating it once
@@ -19,6 +23,20 @@ const Homepage = () => {
         .catch(error => {
             setErrorMsg(error);
         });
+
+        // Get Upcoming movies images for image slider show
+        getUpcomingMovies()
+        .then(movies => {
+            //console.log(movies[0]);
+            const moviesImagesArray = [];
+            movies.forEach(movie => {
+                moviesImagesArray.push(slideshowImagePath+movie.poster_path);
+            });
+            setMoviesImages(moviesImagesArray);
+        })
+        .catch(error => {
+            setErrorMsg(error);
+        });
     }, []); // Here we are using empty array as we want to update the variable `movie` only once
 
     return (
@@ -28,9 +46,7 @@ const Homepage = () => {
             justifyContent: 'center',
             alignItems: 'center',
         }}>
-        <Text>Movie Name: {movie.original_title}</Text>
-        <Text>Language: {movie.original_language}</Text>
-        {errorMsg && <Text style={{color: 'red'}}> Error in the server!!</Text>}
+        <SliderBox images={moviesImages} />
         </View>
     );
 }
