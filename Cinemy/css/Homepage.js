@@ -8,5 +8,10 @@ export const styles = StyleSheet.create({
     },
     sliderDotsHeight: { 
         height: 0, // Hiding the dots of the slider
+    },
+    carousel: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 });
