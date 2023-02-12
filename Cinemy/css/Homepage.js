@@ -18,5 +18,14 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         paddingBottom: 20,
+    },
+    cardContainer: {
+        padding: 5,
+        position: 'relative',
+    },
+    cardImage: {
+        height: 200,
+        width: 120,
+        borderRadius: 15,
     }
 });
