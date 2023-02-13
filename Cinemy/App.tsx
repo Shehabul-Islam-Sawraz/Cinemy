@@ -1,20 +1,18 @@
-import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
-import {getPopularMovies} from './services/services';
+import React from 'react';
 import Homepage from './pages/Homepage';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+// Stack contains all the pages that will nagivate with each other
+const Stack = createNativeStackNavigator();
 
 const Cinemy = () => {
   return (
-    <View
-        style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-        }}>
-          
-        <Homepage></Homepage> 
-
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Homepage" component={Homepage} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 export default Cinemy;
