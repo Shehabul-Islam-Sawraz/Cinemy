@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, Dimensions, ScrollView} from 'react-native';
+import {ActivityIndicator, View, Dimensions, ScrollView} from 'react-native';
 import {getDocumentaryMovies, getFamilyMovies, getPopularMovies, getPopularTVShows, getUpcomingMovies} from '../services/services';
 import {styles} from '../css/Homepage'
 import {SliderBox} from "react-native-image-slider-box"; // Used for image slide show
@@ -15,6 +15,7 @@ const Homepage = () => {
     const [popularTVShows, setPopularTVShows] = useState();
     const [moviesImages, setMoviesImages] = useState();
     const [errorMsg, setErrorMsg] = useState(false); // Stores error message(if any error occurs)
+    const [pageLoaded, setPageLoaded] = useState(false); // USed for loading page
 
     // This will return promise to all the service functions.
     // So, we don't need multiple `then` & `error` function.
@@ -53,10 +54,14 @@ const Homepage = () => {
                 setPopularTVShows(popularTVShowsData);
                 setFamilyMovies(familyMoviesData);
                 setDocumentaryMovies(documentaryMoviesData);
+                setPageLoaded(true);
             }
         )
         .catch(error => {
             setErrorMsg(error);
+        })
+        .finally(() => {
+            setPageLoaded(true);
         });
 
     }, []); // Here we are using empty array as we want to update the variable `movie` only once
@@ -64,61 +69,66 @@ const Homepage = () => {
     return (
         // Fragment is used when we want multiple view under a single return
         <React.Fragment>
-            <ScrollView>
-                {/** Slideshow upcoming movies */}
-                {moviesImages && (
-                    <View
-                        style={styles.sliderContainer}>
-                        <SliderBox 
-                            images = {moviesImages} 
-                            dotStyle = {styles.sliderDotsHeight}
-                            sliderBoxHeight = {dimensionScreen.height / 1.5}
-                            autoplay = {true} 
-                            circleLoop = {true} />
-                    </View>
-                )}
+            {pageLoaded && (
+                <ScrollView>
+                    {/** Slideshow upcoming movies */}
+                    {moviesImages && (
+                        <View
+                            style={styles.sliderContainer}>
+                            <SliderBox 
+                                images = {moviesImages} 
+                                dotStyle = {styles.sliderDotsHeight}
+                                sliderBoxHeight = {dimensionScreen.height / 1.5}
+                                autoplay = {true} 
+                                circleLoop = {true} />
+                        </View>
+                    )}
 
-                {/** Popular Movies */}
-                {popularMovies && (
-                    <View 
-                        style = {styles.carousel}>
-                        <List //Passing arguments to `List` component
-                            title = "Populer Movies"
-                            content = {popularMovies}/> 
-                    </View>
-                )}
+                    {/** Popular Movies */}
+                    {popularMovies && (
+                        <View 
+                            style = {styles.carousel}>
+                            <List //Passing arguments to `List` component
+                                title = "Populer Movies"
+                                content = {popularMovies}/> 
+                        </View>
+                    )}
 
-                {/** Popular TV Shows */}
-                {popularTVShows && (
-                    <View 
-                        style = {styles.carousel}>
-                        <List //Passing arguments to `List` component
-                            title = "Populer TV Shows"
-                            content = {popularTVShows}/> 
-                    </View>
-                )}
+                    {/** Popular TV Shows */}
+                    {popularTVShows && (
+                        <View 
+                            style = {styles.carousel}>
+                            <List //Passing arguments to `List` component
+                                title = "Populer TV Shows"
+                                content = {popularTVShows}/> 
+                        </View>
+                    )}
 
-                {/** Family Movies */}
-                {familyMovies && (
-                    <View 
-                        style = {styles.carousel}>
-                        <List //Passing arguments to `List` component
-                            title = "Family Movies"
-                            content = {familyMovies}/> 
-                    </View>
-                )}
+                    {/** Family Movies */}
+                    {familyMovies && (
+                        <View 
+                            style = {styles.carousel}>
+                            <List //Passing arguments to `List` component
+                                title = "Family Movies"
+                                content = {familyMovies}/> 
+                        </View>
+                    )}
 
-                {/** Documentary Movies */}
-                {documentaryMovies && (
-                    <View 
-                        style = {styles.carousel}>
-                        <List //Passing arguments to `List` component
-                            title = "Documentary Movies"
-                            content = {documentaryMovies}/> 
-                    </View>
-                )}
-                
-            </ScrollView>
+                    {/** Documentary Movies */}
+                    {documentaryMovies && (
+                        <View 
+                            style = {styles.carousel}>
+                            <List //Passing arguments to `List` component
+                                title = "Documentary Movies"
+                                content = {documentaryMovies}/> 
+                        </View>
+                    )}
+                    
+                </ScrollView>
+            )}
+
+            {!pageLoaded && <ActivityIndicator size={'large'}/>}
+            
         </React.Fragment>
     );
 }
