@@ -18,7 +18,9 @@ class Card extends React.PureComponent {
         return (
             // `TouchableOpacity` helps to give a clicky effect to a card component
             <TouchableOpacity
-                onPress={() => navigation.navigate('Detailspage')}
+                onPress={() => navigation.navigate('Detailspage', {
+                    movie: item,
+                })}
                 style = {styles.cardContainer}>
                     <Image
                         resizeMode= "cover"
