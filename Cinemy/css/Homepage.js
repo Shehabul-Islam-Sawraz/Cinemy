@@ -39,5 +39,14 @@ export const styles = StyleSheet.create({
         width: 100,
         textAlign: 'center',
         top: 15,
-    }
+    },
+    errorTextContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    errorText: {
+        fontWeight: 'bold',
+        fontSize: 15,
+    },
 });

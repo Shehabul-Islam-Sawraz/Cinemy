@@ -4,6 +4,7 @@ import {getDocumentaryMovies, getFamilyMovies, getPopularMovies, getPopularTVSho
 import {styles} from '../css/Homepage'
 import {SliderBox} from "react-native-image-slider-box"; // Used for image slide show
 import List from '../components/List'; // Contains the components that will be repeatedly used
+import Error from '../components/Error';
 
 const slideshowImagePath = 'https://image.tmdb.org/t/p/w500';
 const dimensionScreen = Dimensions.get('screen'); // This returns the height & width of the device screen
@@ -57,8 +58,8 @@ const Homepage = () => {
                 setPageLoaded(true);
             }
         )
-        .catch(error => {
-            setErrorMsg(error);
+        .catch(() => {
+            setErrorMsg(true);
         })
         .finally(() => {
             setPageLoaded(true);
@@ -69,7 +70,8 @@ const Homepage = () => {
     return (
         // Fragment is used when we want multiple view under a single return
         <React.Fragment>
-            {pageLoaded && (
+            {/** If movies are loaded, then show movies */}
+            {pageLoaded && !errorMsg && (
                 <ScrollView>
                     {/** Slideshow upcoming movies */}
                     {moviesImages && (
@@ -127,7 +129,11 @@ const Homepage = () => {
                 </ScrollView>
             )}
 
-            {!pageLoaded && <ActivityIndicator size={'large'}/>}
+            {/** If movies are not loaded, then show loading sign */}
+            {!pageLoaded && <ActivityIndicator size={'large'}/>} 
+
+            {/** Show error(if any occurs) */}
+            {errorMsg && <Error/>}
             
         </React.Fragment>
     );
