@@ -28,11 +28,29 @@ export const getUpcomingMovies = async () => {
   return response.data.results; // Return the list of upcoming movies
 };
 
-// ============== Get Popular TV series ============== //
-export const getPopularTVSeries = async () => {
+// ============== Get Popular TV shows ============== //
+export const getPopularTVShows = async () => {
   const response = await axios.get(
     `${apiUrl}/tv/popular?${apiKey}`,
   );
 
-  return response.data.results; // Return the list of popular TV series
+  return response.data.results; // Return the list of popular TV shows
+};
+
+// ============== Get Family Movies ============== //
+export const getFamilyMovies = async () => {
+  const response = await axios.get(
+    `${apiUrl}/discover/movie?${apiKey}&with_genres=10751`,
+  );
+
+  return response.data.results;
+};
+
+// ============== Get Documnetery Movies ============== //
+export const getDocumentaryMovies = async () => {
+  const response = await axios.get(
+    `${apiUrl}/discover/movie?${apiKey}&with_genres=99`,
+  );
+
+  return response.data.results;
 };

@@ -14,6 +14,9 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    listComponent: {
+        marginTop: 25,
+    },
     componentTextHeader: {
         fontSize: 20,
         fontWeight: 'bold',

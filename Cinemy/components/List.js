@@ -13,9 +13,11 @@ class List extends React.PureComponent {
     render() {
         const {title, content} = this.props; // The arguments passed from the caller. Here `title & content` are the properties for this component
         return (
-            <View>
+            <View style={styles.listComponent}>
                 <View>
                     <Text style={styles.componentTextHeader}>{title}</Text>
+                </View>
+                <View>
                     <FlatList
                         data = {content}
                         horizontal = {true} 
