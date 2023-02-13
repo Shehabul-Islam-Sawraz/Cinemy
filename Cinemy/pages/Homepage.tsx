@@ -9,7 +9,7 @@ import Error from '../components/Error';
 const slideshowImagePath = 'https://image.tmdb.org/t/p/w500';
 const dimensionScreen = Dimensions.get('screen'); // This returns the height & width of the device screen
 
-const Homepage = () => {
+const Homepage = ({navigation}) => {
     const [popularMovies, setPopularMovies] = useState(); // Here we are using state variable so that the variable can be updated even after the template is rendered
     const [familyMovies, setFamilyMovies] = useState();
     const [documentaryMovies, setDocumentaryMovies] = useState();
@@ -91,6 +91,7 @@ const Homepage = () => {
                         <View 
                             style = {styles.carousel}>
                             <List //Passing arguments to `List` component
+                                navigation = {navigation}
                                 title = "Populer Movies"
                                 content = {popularMovies}/> 
                         </View>
@@ -101,6 +102,7 @@ const Homepage = () => {
                         <View 
                             style = {styles.carousel}>
                             <List //Passing arguments to `List` component
+                                navigation = {navigation}
                                 title = "Populer TV Shows"
                                 content = {popularTVShows}/> 
                         </View>
@@ -111,6 +113,7 @@ const Homepage = () => {
                         <View 
                             style = {styles.carousel}>
                             <List //Passing arguments to `List` component
+                                navigation = {navigation}
                                 title = "Family Movies"
                                 content = {familyMovies}/> 
                         </View>
@@ -121,6 +124,7 @@ const Homepage = () => {
                         <View 
                             style = {styles.carousel}>
                             <List //Passing arguments to `List` component
+                                navigation = {navigation}
                                 title = "Documentary Movies"
                                 content = {documentaryMovies}/> 
                         </View>

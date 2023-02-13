@@ -14,10 +14,11 @@ const propTypes = {
 
 class Card extends React.PureComponent {
     render() {
-        const {item} = this.props; 
+        const {navigation, item} = this.props; 
         return (
             // `TouchableOpacity` helps to give a clicky effect to a card component
             <TouchableOpacity
+                onPress={() => navigation.navigate('Detailspage')}
                 style = {styles.cardContainer}>
                     <Image
                         resizeMode= "cover"

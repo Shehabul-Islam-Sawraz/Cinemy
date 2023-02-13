@@ -11,7 +11,7 @@ const propTypes = {
 
 class List extends React.PureComponent {
     render() {
-        const {title, content} = this.props; // The arguments passed from the caller. Here `title & content` are the properties for this component
+        const {navigation, title, content} = this.props; // The arguments passed from the caller. Here `title & content` are the properties for this component
         return (
             <View style={styles.listComponent}>
                 <View>
@@ -22,7 +22,7 @@ class List extends React.PureComponent {
                         data = {content}
                         horizontal = {true} 
                         // Here `content` denotes the populerMovies list & each `item` is a movie
-                        renderItem = {({item}) => <Card item={item}/>}>
+                        renderItem = {({item}) => <Card navigation={navigation} item={item}/>}>
                     </FlatList>
                 </View>
             </View>
