@@ -19,7 +19,7 @@ class Card extends React.PureComponent {
             // `TouchableOpacity` helps to give a clicky effect to a card component
             <TouchableOpacity
                 onPress={() => navigation.navigate('Detailspage', {
-                    movie: item,
+                    movieId: item.id,
                 })}
                 style = {styles.cardContainer}>
                     <Image
@@ -27,7 +27,9 @@ class Card extends React.PureComponent {
                         style = {styles.cardImage} 
                         source = {
                             item.poster_path
-                              ? {uri: imageBasePath+item.poster_path}
+                              ? {
+                                    uri: imageBasePath+item.poster_path
+                                }
                               : placeholderImage
                     }/>
                     {!item.poster_path && <Text style = {styles.movieName}>{item.title}</Text>}
