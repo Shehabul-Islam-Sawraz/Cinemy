@@ -22,10 +22,19 @@ export const styles = StyleSheet.create({
     cardContainer: {
         padding: 5,
         position: 'relative',
+        alignItems: 'center',
+        height: 200,
+        //justifyContent: 'center',
     },
     cardImage: {
         height: 200,
         width: 120,
         borderRadius: 15,
+    },
+    movieName: {
+        position: 'absolute',
+        width: 100,
+        textAlign: 'center',
+        top: 15,
     }
 });

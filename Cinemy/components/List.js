@@ -14,7 +14,7 @@ class List extends React.PureComponent {
                         data = {content}
                         horizontal = {true} 
                         // Here `content` denotes the populerMovies list & each `item` is a movie
-                        renderItem = {({item}) => <Card item={item}/>}> 
+                        renderItem = {({item}) => <Card item={item}/>}>
                     </FlatList>
                 </View>
             </View>
