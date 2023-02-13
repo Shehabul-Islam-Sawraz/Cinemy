@@ -1,11 +1,18 @@
 import React from 'react'
 import {TouchableOpacity, Image, Text} from 'react-native';
 import {styles} from '../css/Homepage'
+import PropTypes from 'prop-types';
 
 const imageBasePath = 'https://image.tmdb.org/t/p/w500';
 const placeholderImage = require('../assets/images/placeholder.png');
 
-class List extends React.PureComponent {
+// Defining arguments/properties types
+// Here, the property `item` would be an object
+const propTypes = {
+    item: PropTypes.object,
+};
+
+class Card extends React.PureComponent {
     render() {
         const {item} = this.props; 
         return (
@@ -26,4 +33,5 @@ class List extends React.PureComponent {
     }
 }
 
-export default List;
+Card.propTypes = propTypes; // Setting the properties of card components
+export default Card;
