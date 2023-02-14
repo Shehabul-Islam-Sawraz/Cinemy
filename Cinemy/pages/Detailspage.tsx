@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Text, ScrollView, Image, ActivityIndicator} from 'react-native';
+import {Text, ScrollView, Image, ActivityIndicator, View} from 'react-native';
 import { getMovieDetails } from '../services/services';
 import {styles} from '../css/Detailspage'
 
@@ -23,9 +23,8 @@ const Detailspage = ({route, navigation}) => {
         <React.Fragment>
             {loaded && (
                 <ScrollView>
-                    <Text>{movieDetails.title}</Text>
                     <Image
-                        resizeMode= "cover"
+                        resizeMode= "contain"
                         style = {styles.movieImage} 
                         source = {
                             movieDetails.poster_path
@@ -34,6 +33,24 @@ const Detailspage = ({route, navigation}) => {
                                 }
                               : placeholderImage
                     }/>
+                    <View style = {styles.detailsContainer}>
+                        <Text
+                            style = {styles.movieTitle}>
+                                {movieDetails.title}
+                        </Text>
+                        {movieDetails.genres && (
+                            <View style = {styles.genresContainer}>
+                                {movieDetails.genres.map(genre => {
+                                    return (
+                                        <Text 
+                                            key = {genre.id}
+                                            style = {styles.genre}>
+                                                {genre.name}
+                                        </Text>);
+                                })}
+                            </View>
+                        )}
+                    </View>
                 </ScrollView>
             )}
             {!loaded && <ActivityIndicator size={'large'}/>}

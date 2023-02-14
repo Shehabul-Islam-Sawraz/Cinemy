@@ -23,7 +23,7 @@ class Card extends React.PureComponent {
                 })}
                 style = {styles.cardContainer}>
                     <Image
-                        resizeMode= "cover"
+                        resizeMode= "contain"
                         style = {styles.cardImage} 
                         source = {
                             item.poster_path
