@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {Text, ScrollView, Image, ActivityIndicator, View} from 'react-native';
 import { getMovieDetails } from '../services/services';
-import {styles} from '../css/Detailspage'
+import {styles} from '../css/Detailspage';
+import StarRating from 'react-native-star-rating';
 
 const imageBasePath = 'https://image.tmdb.org/t/p/w500';
 const placeholderImage = require('../assets/images/placeholder.png');
@@ -50,6 +51,12 @@ const Detailspage = ({route, navigation}) => {
                                 })}
                             </View>
                         )}
+                        {/* <Text>{movieDetails.vote_average}</Text> */}
+                        <StarRating
+                            disabled={false}
+                            maxStars={5}
+                            rating={movieDetails.vote_average / 2} // Dividing by two to make the rating count in range of 5
+                        />
                     </View>
                 </ScrollView>
             )}
