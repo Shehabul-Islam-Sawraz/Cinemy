@@ -27,5 +27,13 @@ export const styles = StyleSheet.create({
         marginRight: 10, 
         fontWeight: 'bold',
         fontSize: 15,
+    },
+    movieOverview: {
+        padding: 15, 
+    },
+    movieRelease: {
+        fontWeight: 'bold',
+        marginBottom: 15,
+        fontSize: 15, 
     }
 });

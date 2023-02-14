@@ -3,6 +3,7 @@ import {Text, ScrollView, Image, ActivityIndicator, View} from 'react-native';
 import { getMovieDetails } from '../services/services';
 import {styles} from '../css/Detailspage';
 import StarRating from 'react-native-star-rating';
+import dateFormat from 'dateformat';
 
 const imageBasePath = 'https://image.tmdb.org/t/p/w500';
 const placeholderImage = require('../assets/images/placeholder.png');
@@ -59,6 +60,12 @@ const Detailspage = ({route, navigation}) => {
                             fullStarColor = {'gold'}
                             starSize = {30}
                         />
+                        <Text style = {styles.movieOverview}>
+                            {movieDetails.overview}
+                        </Text>
+                        <Text style = {styles.movieRelease}>
+                            {'Release Date: ' + dateFormat(movieDetails.release_date, 'mmmm dS, yyyy')}
+                        </Text>
                     </View>
                 </ScrollView>
             )}
