@@ -4,13 +4,13 @@ const dimensionScreen = Dimensions.get('screen');
 
 export const styles = StyleSheet.create({
     movieImage: {
-        height: dimensionScreen.height / 2,
+        height: dimensionScreen.height / 2.5,
     },
     movieTitle: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginTop: 10,
-        marginBottom: 10,
+        marginTop: 15,
+        marginBottom: 5,
     },
     detailsContainer: {
         flex: 1,
@@ -35,5 +35,19 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 15,
         fontSize: 15, 
+    },
+    pressableButton: {
+        alignContent: 'center',
+        borderRadius: 50,
+        width: 50,
+        padding: 10,
+        paddingLeft: 12,
+        height: 50,
+        backgroundColor: '#4481FC',
+    },
+    playButton: {
+        position: 'absolute',
+        top: -27,
+        right: 20,
     }
 });

@@ -4,6 +4,7 @@ import { getMovieDetails } from '../services/services';
 import {styles} from '../css/Detailspage';
 import StarRating from 'react-native-star-rating';
 import dateFormat from 'dateformat';
+import PlayButton from '../components/PlayButton';
 
 const imageBasePath = 'https://image.tmdb.org/t/p/w500';
 const placeholderImage = require('../assets/images/placeholder.png');
@@ -26,7 +27,7 @@ const Detailspage = ({route, navigation}) => {
             {loaded && (
                 <ScrollView>
                     <Image
-                        resizeMode= "contain"
+                        resizeMode= "cover"
                         style = {styles.movieImage} 
                         source = {
                             movieDetails.poster_path
@@ -36,6 +37,9 @@ const Detailspage = ({route, navigation}) => {
                               : placeholderImage
                     }/>
                     <View style = {styles.detailsContainer}>
+                        <View style = {styles.playButton}>
+                            <PlayButton/>
+                        </View>
                         <Text
                             style = {styles.movieTitle}>
                                 {movieDetails.title}
