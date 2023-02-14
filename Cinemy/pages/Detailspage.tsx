@@ -53,9 +53,11 @@ const Detailspage = ({route, navigation}) => {
                         )}
                         {/* <Text>{movieDetails.vote_average}</Text> */}
                         <StarRating
-                            disabled={false}
+                            disabled={true} // Setting the interactivity of the star buttons
                             maxStars={5}
                             rating={movieDetails.vote_average / 2} // Dividing by two to make the rating count in range of 5
+                            fullStarColor = {'gold'}
+                            starSize = {30}
                         />
                     </View>
                 </ScrollView>

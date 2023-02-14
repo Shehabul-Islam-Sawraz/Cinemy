@@ -21,6 +21,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'center',
         marginTop: 10, 
+        marginBottom: 20,
     },
     genre: {
         marginRight: 10, 
