@@ -49,5 +49,10 @@ export const styles = StyleSheet.create({
         position: 'absolute',
         top: -27,
         right: 20,
-    }
+    },
+    videoPlayer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 });

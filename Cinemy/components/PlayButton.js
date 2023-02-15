@@ -5,12 +5,16 @@ import { styles } from '../css/Detailspage';
 
 class PlayButton extends React.PureComponent {
     render() {
+        const {handlePress} = this.props;
         return (
-            <Pressable style = {styles.pressableButton}>
-                <Icon 
-                    name = {'caret-forward-outline'}
-                    size = {30}
-                    color = {'white'}/>
+            <Pressable 
+                style = {styles.pressableButton}
+                // Here `videoShown`named function is passed as handlePress from Detailspage
+                onPress = {() => handlePress()}> 
+                    <Icon 
+                        name = {'caret-forward-outline'}
+                        size = {30}
+                        color = {'white'}/>
             </Pressable>
         );
     }
