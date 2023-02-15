@@ -83,6 +83,8 @@ const Detailspage = ({route, navigation}) => {
                         </View>
                     </ScrollView>
                     <Modal
+                        // The video player will support both orientations
+                        supportedOrientations={['portrait', 'landscape']}
                         animationType = "slide"
                         visible = {modalVisible}>
                             <View style = {styles.videoPlayer}>

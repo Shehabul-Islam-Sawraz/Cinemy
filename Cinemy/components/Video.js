@@ -14,6 +14,8 @@ const Video = ({onClose}) => {
             onEnd = {() => {
                 onClose();
             }}
+            // This matches the orientation of the device with the video player
+            fullscreenOrientation = "all"
         />
     );
 };
