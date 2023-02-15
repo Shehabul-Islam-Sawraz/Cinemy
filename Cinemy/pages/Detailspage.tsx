@@ -5,6 +5,7 @@ import {styles} from '../css/Detailspage';
 import StarRating from 'react-native-star-rating';
 import dateFormat from 'dateformat';
 import PlayButton from '../components/PlayButton';
+import VideoPlayer from 'react-native-video-controls';
 
 const imageBasePath = 'https://image.tmdb.org/t/p/w500';
 const placeholderImage = require('../assets/images/placeholder.png');
@@ -84,10 +85,17 @@ const Detailspage = ({route, navigation}) => {
                         animationType = "slide"
                         visible = {modalVisible}>
                             <View style = {styles.videoPlayer}>
-                                <Pressable 
-                                    onPress={() => videoShown()}>
-                                        <Text>{'Hide Video Player'}</Text>
-                                </Pressable>
+                            <VideoPlayer
+                                source = {
+                                    {uri: 'https://vjs.zencdn.net/v/oceans.mp4'}
+                                }
+                                // We will hide the video player when back button is pressed
+                                onBack = {() => {
+                                    videoShown();
+                                }}
+                                // For making back button work, we have to pass the navigator
+                                navigator = {navigation}
+                            />
                             </View>
                     </Modal>
                 </View>
