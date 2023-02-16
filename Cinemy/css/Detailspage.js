@@ -5,7 +5,7 @@ const dimensionScreen = Dimensions.get('screen');
 
 export const styles = StyleSheet.create({
     movieImage: {
-        height: dimensionScreen.height / 2.5,
+        height: dimensionScreen.height / 2.2,
     },
     movieTitle: {
         fontSize: 24,

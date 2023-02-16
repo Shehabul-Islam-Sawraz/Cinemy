@@ -34,7 +34,7 @@ const Detailspage = ({route, navigation}) => {
                 <View>
                     <ScrollView>
                         <Image
-                            resizeMode= "cover"
+                            resizeMode= "stretch"
                             style = {styles.movieImage} 
                             source = {
                                 movieDetails.poster_path
