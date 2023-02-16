@@ -19,5 +19,19 @@ export const styles = StyleSheet.create({
         flexBasis: 'auto',
         flexGrow: 1,
         paddingRight: 8,
-    }
+    },
+    searchedItems: {
+        padding: 5,
+    },
+    emptyResults: {
+        paddingTop: 10,
+        alignItems: 'center',
+    },
+    emptySearch: {
+        paddingLeft: 10,
+    },
+    font: {
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
 });
