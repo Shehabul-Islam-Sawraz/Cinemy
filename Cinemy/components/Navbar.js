@@ -1,7 +1,8 @@
 import React from 'react';
-import {Text, SafeAreaView, View, TouchableOpacity} from 'react-native';
+import {Text, SafeAreaView, View, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'
 import PropTypes from 'prop-types';
+import { styles } from '../css/Homepage';
 
 const propTypes = {
     isHomepage: PropTypes.bool,
@@ -18,7 +19,19 @@ class Navbar extends React.PureComponent {
             // SafeAreaView makes the render of the view under the notch of a mobile device
             <SafeAreaView>
                 {isHomepage 
-                    ? (<View></View>)
+                    ? (<View style = {styles.homeNavbar}>
+                        <Image
+                            style = {styles.logo}
+                            source = {require('../assets/images/logo.png')}/>
+                        <TouchableOpacity
+                            onPress={() => {navigation.navigate('Search')}}>
+                                <Icon
+                                    name = {'search-outline'}
+                                    size = {30}
+                                    color = {'#fff'}/>
+                        </TouchableOpacity>
+                    </View>
+                    )
                     : (<View>
                         <TouchableOpacity
                             onPress={() => {navigation.goBack()}}>

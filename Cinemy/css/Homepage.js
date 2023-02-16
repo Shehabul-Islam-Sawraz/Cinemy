@@ -49,4 +49,17 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 15,
     },
+    logo: {
+        width: 65,
+        height: 65,
+        marginTop: 5,
+        marginLeft: 15,
+    },
+    homeNavbar: {
+        flex: 1,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        padding: 10,
+        alignItems: 'center',
+    }
 });
