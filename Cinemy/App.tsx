@@ -17,13 +17,18 @@ const Cinemy = () => {
           component = {Homepage}
           options = {{
             headerTransparent: true,
+            header: ({navigation}) => (
+                <Navbar navigation={navigation} isHomepage = {true}/>
+            ),
           }}/>
         <Stack.Screen 
           name = "Detailspage" 
           component = {Detailspage}
           options = {{
             headerTransparent: true,
-            header: ({navigation}) => <Navbar navigation={navigation}/>
+            header: ({navigation}) => (
+                <Navbar navigation={navigation} isHomepage = {false}/>
+            ),
           }}/>
       </Stack.Navigator>
     </NavigationContainer>
