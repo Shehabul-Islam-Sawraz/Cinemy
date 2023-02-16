@@ -2,6 +2,7 @@ import React from 'react';
 import {Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { styles } from '../css/Detailspage';
+import Colors from '../Themes/Colors';
 
 class PlayButton extends React.PureComponent {
     render() {
@@ -14,7 +15,7 @@ class PlayButton extends React.PureComponent {
                     <Icon 
                         name = {'caret-forward-outline'}
                         size = {30}
-                        color = {'white'}/>
+                        color = {Colors.white}/>
             </Pressable>
         );
     }

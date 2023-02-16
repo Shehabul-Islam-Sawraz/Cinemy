@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import Colors from '../Themes/Colors';
 
 const dimensionScreen = Dimensions.get('screen');
 
@@ -43,7 +44,7 @@ export const styles = StyleSheet.create({
         padding: 10,
         paddingLeft: 12,
         height: 50,
-        backgroundColor: '#4481FC',
+        backgroundColor: Colors.primary,
     },
     playButton: {
         position: 'absolute',

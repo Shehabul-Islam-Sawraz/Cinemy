@@ -20,7 +20,8 @@ export const styles = StyleSheet.create({
     componentTextHeader: {
         fontSize: 20,
         fontWeight: 'bold',
-        paddingBottom: 20,
+        padding: 10,
+        paddingBottom: 15,
     },
     cardContainer: {
         padding: 5,
