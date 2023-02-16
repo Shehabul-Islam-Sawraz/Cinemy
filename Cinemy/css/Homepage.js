@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import Colors from '../Themes/Colors';
 
 export const styles = StyleSheet.create({
     sliderContainer: {
@@ -50,6 +51,7 @@ export const styles = StyleSheet.create({
     errorText: {
         fontWeight: 'bold',
         fontSize: 15,
+        color: Colors.danger,
     },
     logo: {
         width: 65,

@@ -5,7 +5,6 @@ import {styles} from '../css/Detailspage';
 import StarRating from 'react-native-star-rating';
 import dateFormat from 'dateformat';
 import PlayButton from '../components/PlayButton';
-import VideoPlayer from 'react-native-video-controls';
 import Video from '../components/Video';
 
 const imageBasePath = 'https://image.tmdb.org/t/p/w500';
