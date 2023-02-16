@@ -70,5 +70,5 @@ export const getSearchedMovieTV = async (query, type) => {
     `${apiUrl}/search/${type}?${apiKey}&query=${query}`,
   );
 
-  return response.data;
+  return response.data.results;
 };

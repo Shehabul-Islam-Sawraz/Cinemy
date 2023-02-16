@@ -11,16 +11,19 @@ const Search = ({navigation}) => {
     const [searchResults, setSearchResults] = useState();
     const [error, setError] = useState(false);
 
-    // Fetches the search movies/shows using search API service
+    // Fetches the search movies & shows using search API service
     const onSubmit = query => {
-        getSearchedMovieTV(query, 'movie')
-            .then(data => {
-                setSearchResults(data.results);
-                //console.log(data.results.length);
-            })
-            .catch(() => {
-                setError(true);
-            });
+        Promise.all([
+            getSearchedMovieTV(query, 'movie'), 
+            getSearchedMovieTV(query, 'tv')
+        ])
+        .then(([movies, tv]) => {
+            const data = [...movies, ...tv];
+            setSearchResults(data);
+        })
+        .catch(() => {
+            setError(true);
+        });
     };
 
     return (
